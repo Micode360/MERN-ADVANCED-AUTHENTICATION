@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const db = require('./config/db');
 db();
+const errorHandler = require('./middleware/error');
 
 
 
@@ -15,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use('/api/auth', require('./routes/auth'))
-
+app.use(errorHandler);//this handler must always be the last handler
 
 
 
