@@ -8,6 +8,9 @@ const {
     resetPassword
  } = require('../controllers/auth');
 
+
+ //remember to delete cacert.pem if you are not using it
+
 router.route('/register').post(register);
 
 router.route('/login').post(login);

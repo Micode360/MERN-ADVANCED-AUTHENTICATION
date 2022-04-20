@@ -16,9 +16,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/private', require('./routes/private'))
 app.use(errorHandler);//this handler must always be the last handler
 
 
+// process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 //Powering up the server
 const server = app.listen(port, () => console.log(`your port is running at ${port}`));
@@ -29,3 +31,4 @@ process.on("unhandledRejection", (error, promise) => {
 
     server.close(()=> process.exit(1));
 })
+
